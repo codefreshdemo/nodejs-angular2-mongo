@@ -1,0 +1,42 @@
+version: '1.0'
+
+steps:
+  build_client:
+    type: build
+    description: codefresh example client
+    image_name: codefreshio/web-client
+    dockerfile: Dockerfile.client
+    working-directory: ${{main_clone}}
+    tag: ${{CF_BRANCH}}
+
+  build_server:
+    type: build
+    description: codefresh example server
+    image_name: codefreshio/web-server
+    dockerfile: Dockerfile.server
+    working-directory: ${{main_clone}}
+    tag: ${{CF_BRANCH}}
+
+  launch_composition:
+    type: launch-composition
+    environmentName: 'env-composition-example'
+    entry_point: client
+    composition:
+      version: '2'
+      services:
+        mongodb:
+          image: mongo
+          ports:
+            - 28017
+        server:
+          image: ${{build_server}}
+          environment:
+            - MONGO_URI=mongodb://mongodb/exampleDb
+          links:
+            - mongodb
+          ports:
+           - 9000
+        client:
+          image: ${{build_client}}
+          ports:
+            - 3000
