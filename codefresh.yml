@@ -6,7 +6,7 @@ steps:
     description: codefresh example client
     image_name: codefreshio/web-client
     dockerfile: Dockerfile.client
-    working-directory: ${{main_clone}}
+    working_directory: ${{main_clone}}
     tag: ${{CF_BRANCH}}
 
   build_server:
@@ -14,7 +14,7 @@ steps:
     description: codefresh example server
     image_name: codefreshio/web-server
     dockerfile: Dockerfile.server
-    working-directory: ${{main_clone}}
+    working_directory: ${{main_clone}}
     tag: ${{CF_BRANCH}}
 
   launch_composition:
@@ -40,3 +40,4 @@ steps:
           image: ${{build_client}}
           ports:
             - 3000
+            - 443
