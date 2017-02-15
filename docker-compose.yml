@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 28017
+  server:
+    image: codefreshio/web-server
+    environment:
+      - MONGO_URI=mongodb://mongodb/exampleDb
+    links:
+      - mongodb
+    ports:
+     - 9000
+  client:
+    image: codefreshio/web-client
+    ports:
+      - 3000
+      - 443
