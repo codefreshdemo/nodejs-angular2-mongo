@@ -5,7 +5,9 @@ services:
     ports:
       - 28017
   server:
-    image: codefreshio/web-server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
     environment:
       - MONGO_URI=mongodb://mongodb/exampleDb
     links:
@@ -13,7 +15,9 @@ services:
     ports:
      - 9000
   client:
-    image: codefreshio/web-client
+    build:
+      context: .
+      dockerfile: Dockerfile.client
     ports:
       - 3000
       - 443
