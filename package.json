@@ -5,7 +5,7 @@
   "main"         : "main.js",
   "author"       : "aviad@codefresh.io",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" --watch false",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
