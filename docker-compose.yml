@@ -3,7 +3,7 @@ services:
   mongodb:
     image: mongo
     ports:
-      - 28017
+      - 27017
   server:
     build:
       context: .
@@ -20,4 +20,3 @@ services:
       dockerfile: Dockerfile.client
     ports:
       - 3000
-      - 443
