@@ -21,7 +21,7 @@
     "mongoose"   : "~3.6.2",
     "morgan"	 : "~1.2.2",
     "body-parser": "~1.5.2",
-    "method-override": "~2.1.2",
+    "method-override": "~3.0.0",
 
     "@angular/common": "~2.1.1",
     "@angular/compiler": "~2.1.1",
